@@ -84,7 +84,7 @@ export function MotionDirector() {
           invalidateOnRefresh: true,
         },
       })
-        .to(".hero-copy", { y: -70, opacity: 0.18 }, 0)
+        .to(".hero-copy", { opacity: 0 }, 0)
         .to(".hero-flow", {
           x: () => -window.innerWidth * (mobileMotion ? 0.12 : 0.22),
           y: () => window.innerHeight * (mobileMotion ? 0.1 : 0.18),

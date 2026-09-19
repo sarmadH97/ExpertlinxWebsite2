@@ -1,4 +1,5 @@
 import { ArrowUpRight, ChevronDown } from "lucide-react";
+import { Fragment } from "react";
 import { MotionDirector } from "@/components/motion-director";
 
 const services = [
@@ -67,7 +68,29 @@ function ArrowLink({ children, href = "#contact", light = false }: { children: R
 }
 
 function HeroFlow() {
-  return <div className="hero-flow" aria-hidden="true"><svg viewBox="0 0 1200 900" role="presentation" preserveAspectRatio="xMidYMid slice"><g className="flow-paths">{flowLines.map((line, index) => <path key={index} data-flow-line d="M 1010 -160 C 710 -40 575 155 620 340 C 670 540 1020 490 1110 690 C 1200 890 910 1005 655 850 C 470 735 400 600 270 720 C 130 850 255 1035 530 1100" transform={`translate(${line.x} ${line.y})`} fill="none" stroke={line.color} strokeOpacity={line.opacity} strokeWidth={index === 8 || index === 9 ? 2.2 : 1.35} vectorEffect="non-scaling-stroke" />)}</g></svg></div>;
+  return <div className="hero-flow" aria-hidden="true"><div className="hero-flow-ambient"><svg viewBox="0 0 1200 900" role="presentation" preserveAspectRatio="xMidYMid slice"><g className="flow-paths">{flowLines.map((line, index) => <g key={index} data-flow-drift={index % 3} transform={`translate(${line.x} ${line.y})`}><path data-flow-line data-flow-speed={index % 3} d="M 1110 -150 C 805 -20 575 120 520 310 C 465 505 850 485 970 630 C 1125 820 850 995 560 825 C 345 700 300 535 105 625 C -85 715 15 930 355 1010" fill="none" stroke={line.color} strokeOpacity={line.opacity} strokeWidth={index === 8 || index === 9 ? 2.2 : 1.35} vectorEffect="non-scaling-stroke" /></g>)}</g></svg></div></div>;
+}
+
+function MicrosoftEcosystem() {
+  return <div className="microsoft-ecosystem page-grid" role="img" aria-label="Microsoft technology ecosystem with Azure, Dynamics 365, Power Platform, Microsoft 365 and Power BI">
+    <div className="page-gutter ecosystem-shell">
+      <div className="ecosystem-intro" data-heading-reveal><p className="micro-label">Connected Microsoft ecosystem</p><h3>One platform.<br />Working together.</h3><p>ExpertLinx connects the Microsoft technologies your teams rely on into one coherent operating environment.</p></div>
+      <div className="orbit-stage" data-orbit-stage>
+        <div className="orbit-ring orbit-ring-outer" data-orbit-ring data-orbit-duration="36" data-orbit-direction="1">
+          <div className="orbit-node orbit-node-top"><span data-orbit-label>Power Platform</span></div>
+          <div className="orbit-node orbit-node-bottom"><span data-orbit-label>Microsoft 365</span></div>
+        </div>
+        <div className="orbit-ring orbit-ring-middle" data-orbit-ring data-orbit-duration="27" data-orbit-direction="-1">
+          <div className="orbit-node orbit-node-left"><span data-orbit-label>Azure</span></div>
+          <div className="orbit-node orbit-node-right"><span data-orbit-label>Dynamics 365</span></div>
+        </div>
+        <div className="orbit-ring orbit-ring-inner" data-orbit-ring data-orbit-duration="21" data-orbit-direction="1">
+          <div className="orbit-node orbit-node-lower-right"><span data-orbit-label>Power BI</span></div>
+        </div>
+        <div className="orbit-core"><span>Microsoft</span><small>Connected ecosystem</small></div>
+      </div>
+    </div>
+  </div>;
 }
 
 export default function Home() {
@@ -95,7 +118,7 @@ export default function Home() {
       </section>
 
       <section className="services page-grid" id="services" aria-label="Primary services">
-        {services.map(([title, description], index) => <article className="service-row" key={title} data-row-reveal><div className="page-gutter service-grid"><span className="row-number">0{index + 1}</span><h2>{title}</h2><p>{description}</p><ArrowLink>Explore service</ArrowLink></div></article>)}
+        {services.map(([title, description], index) => <Fragment key={title}><article className="service-row" data-row-reveal><div className="page-gutter service-grid"><span className="row-number">0{index + 1}</span><h2>{title}</h2><p>{description}</p><ArrowLink>Explore service</ArrowLink></div></article>{index === 0 ? <MicrosoftEcosystem /> : null}</Fragment>)}
       </section>
 
       <section className="capabilities" id="capabilities" aria-labelledby="capabilities-title">

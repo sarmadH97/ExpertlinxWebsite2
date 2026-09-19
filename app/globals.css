@@ -117,7 +117,7 @@ a:focus-visible, summary:focus-visible { outline: 3px solid var(--teal); outline
 .insights-footer { padding-top: 34px; display: flex; justify-content: flex-end; }
 
 .final-cta { padding: clamp(92px, 7vw, 122px) 0; background: var(--teal); color: #073538; }
-.cta-grid { display: grid; grid-template-columns: 64% 36%; align-items: end; gap: 6vw; }
+.cta-grid { display: grid; grid-template-columns: minmax(0, 1.78fr) minmax(0, 1fr); align-items: end; gap: 6vw; }
 .final-cta h2 { margin-top: 25px; font-size: clamp(4.2rem, 6.5vw, 7.4rem); line-height: .91; text-transform: uppercase; }
 .cta-copy { padding-bottom: 6px; }
 .cta-copy p { max-width: 440px; margin-bottom: 32px; font-size: 1.02rem; }

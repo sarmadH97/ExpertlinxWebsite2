@@ -89,7 +89,7 @@ export function MotionDirector() {
           y: () => window.innerHeight * (mobileMotion ? 0.1 : 0.18),
           scale: mobileMotion ? 1.28 : 1.58,
           rotation: 0.7,
-          opacity: 0.2,
+          opacity: 0,
           ease: "none",
         }, 0);
 

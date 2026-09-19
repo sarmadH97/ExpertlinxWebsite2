@@ -75,23 +75,29 @@ export function MotionDirector() {
       });
 
       gsap.timeline({
+        defaults: { duration: 1, ease: "none" },
         scrollTrigger: {
           trigger: ".hero",
           start: "top top",
           end: () => `+=${Math.round(window.innerHeight * 0.82)}`,
-          scrub: 0.55,
+          scrub: true,
           invalidateOnRefresh: true,
         },
       })
-        .to(".hero-copy", { y: -70, opacity: 0.18, ease: "none" }, 0)
+        .to(".hero-copy", { y: -70, opacity: 0.18 }, 0)
         .to(".hero-flow", {
           x: () => -window.innerWidth * (mobileMotion ? 0.12 : 0.22),
           y: () => window.innerHeight * (mobileMotion ? 0.1 : 0.18),
           scale: mobileMotion ? 1.28 : 1.58,
           rotation: 0.7,
           opacity: 0,
-          ease: "none",
-        }, 0);
+        }, 0)
+        .fromTo(
+          "[data-transition-service]",
+          { y: 52, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.82, ease: "none" },
+          0.18,
+        );
 
       const orbitTimelines = new Map<HTMLElement, gsap.core.Timeline>();
       const orbitRings = gsap.utils.toArray<HTMLElement>("[data-orbit-ring]");

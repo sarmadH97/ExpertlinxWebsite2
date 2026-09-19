@@ -118,7 +118,7 @@ export default function Home() {
       </section>
 
       <section className="services page-grid" id="services" aria-label="Primary services">
-        {services.map(([title, description], index) => <Fragment key={title}><article className="service-row" data-row-reveal><div className="page-gutter service-grid"><span className="row-number">0{index + 1}</span><h2>{title}</h2><p>{description}</p><ArrowLink>Explore service</ArrowLink></div></article>{index === 0 ? <MicrosoftEcosystem /> : null}</Fragment>)}
+        {services.map(([title, description], index) => <Fragment key={title}><article className="service-row" data-transition-service={index === 0 ? "" : undefined} data-row-reveal={index === 0 ? undefined : ""}><div className="page-gutter service-grid"><span className="row-number">0{index + 1}</span><h2>{title}</h2><p>{description}</p><ArrowLink>Explore service</ArrowLink></div></article>{index === 0 ? <MicrosoftEcosystem /> : null}</Fragment>)}
       </section>
 
       <section className="capabilities" id="capabilities" aria-labelledby="capabilities-title">
